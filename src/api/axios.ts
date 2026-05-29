@@ -1,8 +1,21 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 
+const LOCAL_API = 'http://localhost:3000/api';
+
+function resolveApiBaseUrl(): string {
+  const fromEnv = import.meta.env.VITE_API_URL?.trim();
+  if (fromEnv) return fromEnv.replace(/\/$/, '');
+
+  if (import.meta.env.DEV) return LOCAL_API;
+
+  throw new Error(
+    'VITE_API_URL is not set. Add it in Vercel (Settings → Environment Variables) and redeploy.',
+  );
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: resolveApiBaseUrl(),
 });
 
 api.interceptors.request.use((config) => {

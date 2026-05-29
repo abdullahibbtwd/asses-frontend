@@ -32,7 +32,13 @@ React frontend for the multi-tenant helpdesk platform.
 VITE_API_URL=http://localhost:3000/api
 ```
 
-Production: set `VITE_API_URL` to your Railway API URL including `/api`.
+Production: in **Vercel → Settings → Environment Variables**, set:
+
+`VITE_API_URL` = `https://YOUR-SERVICE.onrender.com/api`
+
+Then **Redeploy** (required — Vite bakes this in at build time).
+
+Do **not** commit `.env` with `localhost` — it will break production builds.
 
 ---
 
