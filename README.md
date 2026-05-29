@@ -84,4 +84,3 @@ npm run dev
 3. Add environment variable `VITE_API_URL`
 4. Deploy
 
-See [DEPLOY.md](../DEPLOY.md) for full Railway + Vercel steps.
