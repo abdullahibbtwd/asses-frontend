@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ConfigProvider } from 'antd';
+import ErrorBoundary from './components/shared/ErrorBoundary.tsx';
 import { AppRouter } from './routes/AppRouter';
 import './index.css';
 
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')!).render(
         },
       }}
     >
-      <AppRouter />
+      <ErrorBoundary>
+        <AppRouter />
+      </ErrorBoundary>
     </ConfigProvider>
   </StrictMode>,
 );
